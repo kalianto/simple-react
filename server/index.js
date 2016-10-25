@@ -13,6 +13,7 @@ app.use(webpackMiddleware(compiler, {
   publicPath: webpackConfig.output.publicPath,
   noInfo: true
 }));
+//app.use(webpackHotMiddleware(compiler));
 app.use(webpackHotMiddleware(compiler, {
   log: console.log,
   path: '/__webpack_hmr'
