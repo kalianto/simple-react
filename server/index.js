@@ -6,18 +6,18 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev.js';
 
-let app = express();
+const app = express();
 const compiler = webpack(webpackConfig);
 app.use(webpackMiddleware(compiler, {
   hot: true,
   publicPath: webpackConfig.output.publicPath,
   noInfo: true
 }));
-//app.use(webpackHotMiddleware(compiler));
-app.use(webpackHotMiddleware(compiler, {
-  log: console.log,
-  path: '/__webpack_hmr'
-}));
+app.use(webpackHotMiddleware(compiler));
+// app.use(webpackHotMiddleware(compiler, {
+//   log: console.log,
+//   path: '/__webpack_hmr'
+// }));
 
 app.get('/*', (req, res) => {
 
